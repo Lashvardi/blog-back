@@ -11,6 +11,8 @@ public static class DependencyServiceRegistration
         services.AddScoped<IPostService, PostService>();
         services.AddScoped<ICategoryService, CategoryService>();
         services.AddScoped<ITagService, TagService>();
+        services.AddScoped<IImageService, ImageService>();
+        services.AddHttpContextAccessor();
         services.AddAutoMapper(typeof(Program).Assembly);
 
     }

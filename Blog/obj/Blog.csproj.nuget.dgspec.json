@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Blog\\Blog\\Blog\\Blog.csproj": {}
+    "E:\\Blog_Back\\blog-back\\Blog\\Blog.csproj": {}
   },
   "projects": {
-    "C:\\Blog\\Blog\\Blog\\Blog.csproj": {
+    "E:\\Blog_Back\\blog-back\\Blog\\Blog.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Blog\\Blog\\Blog\\Blog.csproj",
+        "projectUniqueName": "E:\\Blog_Back\\blog-back\\Blog\\Blog.csproj",
         "projectName": "Blog",
-        "projectPath": "C:\\Blog\\Blog\\Blog\\Blog.csproj",
-        "packagesPath": "C:\\Users\\DevTeam\\.nuget\\packages\\",
-        "outputPath": "C:\\Blog\\Blog\\Blog\\obj\\",
+        "projectPath": "E:\\Blog_Back\\blog-back\\Blog\\Blog.csproj",
+        "packagesPath": "C:\\Users\\HP\\.nuget\\packages\\",
+        "outputPath": "E:\\Blog_Back\\blog-back\\Blog\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\DevTeam\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\HP\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
