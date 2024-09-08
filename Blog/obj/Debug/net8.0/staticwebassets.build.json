@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "bcXMMkMyUBtdVliKRvHABtMXqFaSCocUOsjnZvA/OWc=",
+  "Hash": "1G0shBDUTEmaqLGb8KXQa+GIwFz8ivTvFwQZ14ssmU8=",
   "Source": "Blog",
   "BasePath": "_content/Blog",
   "Mode": "Default",
@@ -205,6 +205,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\uploads\\b950d1d1-5836-4561-b4e8-aee5395025f6.png"
+    },
+    {
+      "Identity": "E:\\Blog_Back\\blog-back\\Blog\\wwwroot\\uploads\\bef2a4b6-22e9-423f-a2d0-51d7d974e48b.png",
+      "SourceId": "Blog",
+      "SourceType": "Discovered",
+      "ContentRoot": "E:\\Blog_Back\\blog-back\\Blog\\wwwroot\\",
+      "BasePath": "_content/Blog",
+      "RelativePath": "uploads/bef2a4b6-22e9-423f-a2d0-51d7d974e48b.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\bef2a4b6-22e9-423f-a2d0-51d7d974e48b.png"
     },
     {
       "Identity": "E:\\Blog_Back\\blog-back\\Blog\\wwwroot\\uploads\\d666a103-628d-4657-a750-9d1fa18de280.png",
