@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "cLtduNpGA20=",
+  "dgSpecHash": "UDUFR24cSAU=",
   "success": true,
-  "projectFilePath": "C:\\Blog_bACkend\\blog-back\\Blog\\Blog.csproj",
+  "projectFilePath": "C:\\Blog_bACkend\\blog-back\\blog\\Blog.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\DevTeam\\.nuget\\packages\\automapper\\13.0.1\\automapper.13.0.1.nupkg.sha512",
     "C:\\Users\\DevTeam\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
