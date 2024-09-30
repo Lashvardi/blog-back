@@ -32,6 +32,28 @@ public class AdminController : Controller
         return Ok(token);
     }
     
+    [HttpPost("validate")]
+    public async Task<IActionResult> ValidateAdminToken()
+    {
+        // Extract the token from the Authorization header
+        if (!HttpContext.Request.Headers.TryGetValue("Authorization", out var authHeader))
+        {
+            return BadRequest("Authorization header is missing");
+        }
+
+        var token = authHeader.ToString().Replace("Bearer ", "");
+
+        if (string.IsNullOrEmpty(token))
+        {
+            return BadRequest("Token is missing or invalid");
+        }
+
+        var isValid = await _adminService.ValidateAdminTokenAsync(token);
+    
+        object response = new { isValid };
+        return Ok(response);
+    }
+    
     
     
     

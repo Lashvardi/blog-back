@@ -39,4 +39,27 @@ public class TokenService : ITokenService
         return tokenHandler.WriteToken(token);
     }
     
+    public async Task<bool> ValidateAdminTokenAsync(string token)
+    {
+        var tokenHandler = new JwtSecurityTokenHandler();
+        var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["JwtConfig:Secret"]));
+        
+        try
+        {
+            tokenHandler.ValidateToken(token, new TokenValidationParameters
+            {
+                ValidateIssuerSigningKey = true,
+                IssuerSigningKey = key,
+                ValidateIssuer = false,
+                ValidateAudience = false
+            }, out SecurityToken validatedToken);
+        }
+        catch
+        {
+            return false;
+        }
+        
+        return true;
+    }
+    
 }

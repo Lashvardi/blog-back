@@ -34,6 +34,7 @@ public class MappingProfile : Profile
         CreateMap<PostDto, Post>()
             .ForMember(dest => dest.Status, opt => opt.MapFrom(src => (BLOG_STATUS)src.Status));
 
+        CreateMap<Post, GetPostDtoWithoutContent>();
         CreateMap<CategoryDto, Category>();
         CreateMap<TagDto, Tag>();
 

@@ -13,4 +13,7 @@ public interface IAdminService
     // login
     Task<Token> LoginAdminAsync(AdminLogin adminLogin);
     
+    // validate token
+    Task<bool> ValidateAdminTokenAsync(string token);
+    
 }

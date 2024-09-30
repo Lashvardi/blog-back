@@ -11,7 +11,11 @@ public interface IPostService
     Task<ApiResponse<PaginatedResult<PostDto>>> GetPostsAsync(int pageNumber, int pageSize);
     
     Task<ApiResponse<PaginatedResult<PostDto>>> GetAllPostsAsync(int pageNumber, int pageSize);
-
+    
+    Task<ApiResponse<PaginatedResult<GetPostDtoWithoutContent>>> GetAllPostsAsyncNoContent(int pageNumber, int pageSize);
+    
+    // same as above but only 10 posts
+    Task<ApiResponse<PaginatedResult<GetPostDtoWithoutContent>>> GetAllPostsAsyncNoContent();
     // publish draft post
     Task<PostDto> PublishPostAsync(int postId);
     
@@ -30,5 +34,16 @@ public interface IPostService
     // delete post
     Task<Post> DeletePostAsync(int postId);
     
+    // get post tags
+    Task<List<PostTagName>> GetPostTagNames(int postId);
+    
+    // get suggested posts
+    Task<List<PostDto>> Get3SuggestedPosts(int postId);
+    
+    Task SeedPostsAsync();
+    
+    // search posts
+    Task<ApiResponse<PaginatedResult<PostDto>>> SearchPostsAsync(string query, int pageNumber, int pageSize);
+
 
 }

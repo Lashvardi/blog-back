@@ -63,6 +63,11 @@ public class AdminService : IAdminService
         };
     }
     
+    public async Task<bool> ValidateAdminTokenAsync(string token)
+    {
+        return await _tokenService.ValidateAdminTokenAsync(token);
+    }
+    
     
 
 }

@@ -84,6 +84,15 @@ public class PostController : Controller
         return Ok(post);
     }
     
+    // get post tags
+    [HttpGet("get-post-tags/{postId}")]
+    public async Task<IActionResult> GetPostTags(int postId)
+    {
+        var postTags = await _postService.GetPostTagNames(postId);
+        
+        return Ok(postTags);
+    }
+    
     
     [HttpDelete("delete-post/{postId}")]
     public async Task<IActionResult> DeletePostAsync(int postId)
@@ -91,5 +100,50 @@ public class PostController : Controller
         var post = await _postService.DeletePostAsync(postId);
         
         return Ok(post);
+    }
+    
+    [HttpGet("get-all-posts-no-content")]
+    public async Task<ActionResult<ApiResponse<PaginatedResult<GetPostDtoWithoutContent>>>> GetAllPostsNoContent(int pageNumber = 1, int pageSize = 10)
+    {
+        var paginatedResult = await _postService.GetAllPostsAsyncNoContent(pageNumber, pageSize);
+        
+        return Ok(paginatedResult);
+    }
+    
+    [HttpGet("get-all-posts-no-content-10")]
+    public async Task<ActionResult<ApiResponse<PaginatedResult<GetPostDtoWithoutContent>>>> GetAllPostsNoContent()
+    {
+        var paginatedResult = await _postService.GetAllPostsAsyncNoContent();
+        
+        return Ok(paginatedResult);
+    }
+    
+    
+    [HttpGet("get-suggested-posts/{postId}")]
+    public async Task<IActionResult> Get3SuggestedPosts(int postId)
+    {
+        var suggestedPosts = await _postService.Get3SuggestedPosts(postId);
+        
+        return Ok(suggestedPosts);
+    }
+    
+    // seed posts
+    [HttpPost("seed-posts")]
+    public async Task<IActionResult> SeedPosts()
+    {
+
+        _postService.SeedPostsAsync();
+        
+        return Ok();
+    }
+    
+    // search posts
+    [HttpGet("search-posts")]
+    public async Task<ActionResult<ApiResponse<PaginatedResult<PostDto>>>>
+        SearchPosts(string query, int pageNumber = 1, int pageSize = 10)
+    {
+        var paginatedResult = await _postService.SearchPostsAsync(query, pageNumber, pageSize);
+        
+        return Ok(paginatedResult);
     }
 }
