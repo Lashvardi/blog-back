@@ -9,6 +9,7 @@ public class PostDto
     public string Content { get; set; }
     public BLOG_STATUS Status { get; set; }
     public DateTime CreatedAt { get; set; }
+    public string Description { get; set; }
     
     public string CoverImageUrl { get; set; }
     

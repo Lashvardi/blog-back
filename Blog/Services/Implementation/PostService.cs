@@ -30,6 +30,7 @@ public class PostService: IPostService
         {
             Title = postCreation.Title,
             Content = postCreation.Content,
+            Description = postCreation.Description,
             CreatedAt = DateTime.Now,
             CategoryId = postCreation.CategoryId,
             Category = category,
@@ -262,6 +263,7 @@ public class PostService: IPostService
         // Step 2: Update the post fields
         post.Title = postCreation.Title;
         post.Content = postCreation.Content;
+        post.Description = postCreation.Description;
         
         if(postCreation.CategoryId != 0)
         {
