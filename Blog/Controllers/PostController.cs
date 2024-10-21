@@ -148,11 +148,35 @@ public class PostController : Controller
     }
     
     // get meta data
-    [HttpGet("get-meta-data")]
+    [HttpGet("share/{postId}")]
     public async Task<IActionResult> GetMetaData(int postId)
     {
-        var metaData = await _postService.GetOpenGraphMetaTagsAsync(postId);
-        
-        return Ok(metaData);
+        var userAgent = Request.Headers["User-Agent"].ToString().ToLower();
+
+        // Check if it's Facebook's crawler
+        if (IsFacebookCrawler(userAgent))
+        {
+            var metaTags = await _postService.GetOpenGraphMetaTagsAsync(postId);
+            return Content(metaTags, "text/html");
+        }
+        else
+        {
+
+            // Redirect to the actual blog post page
+            return Redirect($"https://ieh.ge/blog/{postId}");
+        }
+    }
+
+    private bool IsFacebookCrawler(string userAgent)
+    {
+        // Facebook's crawler user agents
+        string[] facebookBots = {
+            "facebookexternalhit",
+            "facebookscraper",
+            "facebook bot",
+            "facebookcatalog"
+        };
+
+        return facebookBots.Any(bot => userAgent.Contains(bot));
     }
 }

@@ -524,10 +524,10 @@ public class PostService: IPostService
         var uploadsUrl = "https://api.ieh.ge";
         var metaTags = new StringBuilder();
 
+        metaTags.AppendLine($"<meta property=\"og:url\" content=\"{baseUrl}blog/{post.Id}\" />");
         metaTags.AppendLine($"<meta property=\"og:title\" content=\"{HttpUtility.HtmlEncode(post.Title)}\" />");
         metaTags.AppendLine($"<meta property=\"og:description\" content=\"{HttpUtility.HtmlEncode(post.Description ?? (post.Content.Length > 200 ? post.Content.Substring(0, 197) + "..." : post.Content))}\" />");
         metaTags.AppendLine($"<meta property=\"og:image\" content=\"{uploadsUrl}{post.CoverImageUrl}\" />");
-        metaTags.AppendLine($"<meta property=\"og:url\" content=\"{baseUrl}blog/{post.Id}\" />");
         metaTags.AppendLine("<meta property=\"og:type\" content=\"article\" />");
         metaTags.AppendLine($"<meta property=\"article:published_time\" content=\"{post.CreatedAt:O}\" />");
         metaTags.AppendLine("<meta property=\"article:author\" content=\"Blog Author\" />"); // Replace with actual author name or fetch from user if implemented
