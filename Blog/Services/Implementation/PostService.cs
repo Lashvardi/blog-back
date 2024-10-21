@@ -521,11 +521,12 @@ public class PostService: IPostService
 
 
         var baseUrl = "https://ieh.ge/";
+        var uploadsUrl = "https://api.ieh.ge";
         var metaTags = new StringBuilder();
 
         metaTags.AppendLine($"<meta property=\"og:title\" content=\"{HttpUtility.HtmlEncode(post.Title)}\" />");
         metaTags.AppendLine($"<meta property=\"og:description\" content=\"{HttpUtility.HtmlEncode(post.Description ?? (post.Content.Length > 200 ? post.Content.Substring(0, 197) + "..." : post.Content))}\" />");
-        metaTags.AppendLine($"<meta property=\"og:image\" content=\"api.{baseUrl}{post.CoverImageUrl}\" />");
+        metaTags.AppendLine($"<meta property=\"og:image\" content=\"{uploadsUrl}{post.CoverImageUrl}\" />");
         metaTags.AppendLine($"<meta property=\"og:url\" content=\"{baseUrl}/blog/{post.Id}\" />");
         metaTags.AppendLine("<meta property=\"og:type\" content=\"article\" />");
         metaTags.AppendLine($"<meta property=\"article:published_time\" content=\"{post.CreatedAt:O}\" />");
