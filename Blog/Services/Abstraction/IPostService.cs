@@ -44,6 +44,7 @@ public interface IPostService
     
     // search posts
     Task<ApiResponse<PaginatedResult<PostDto>>> SearchPostsAsync(string query, int pageNumber, int pageSize);
-
+    
+    Task<string> GetOpenGraphMetaTagsAsync(int postId);
 
 }

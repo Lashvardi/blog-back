@@ -1,4 +1,6 @@
-﻿using AutoMapper;
+﻿using System.Text;
+using System.Web;
+using AutoMapper;
 using Blog.Data;
 using Blog.Dtos;
 using Blog.Exceptions;
@@ -504,6 +506,39 @@ public class PostService: IPostService
         return ApiResponse<PaginatedResult<PostDto>>.SuccessResponse(paginatedResult, "Posts retrieved successfully");
     }
 
+        public async Task<string> GetOpenGraphMetaTagsAsync(int postId)
+    {
+        var post = await _context.Posts
+            .Include(p => p.Category)
+            .Include(p => p.PostTags)
+            .ThenInclude(pt => pt.Tag)
+            .FirstOrDefaultAsync(p => p.Id == postId && p.Status == BLOG_STATUS.PUBLISHED);
+
+        if (post == null)
+        {
+            throw new NotFoundException("Post not found or not published.");
+        }
+
+
+        var baseUrl = "https://ieh.ge/";
+        var metaTags = new StringBuilder();
+
+        metaTags.AppendLine($"<meta property=\"og:title\" content=\"{HttpUtility.HtmlEncode(post.Title)}\" />");
+        metaTags.AppendLine($"<meta property=\"og:description\" content=\"{HttpUtility.HtmlEncode(post.Description ?? (post.Content.Length > 200 ? post.Content.Substring(0, 197) + "..." : post.Content))}\" />");
+        metaTags.AppendLine($"<meta property=\"og:image\" content=\"api.{baseUrl}{post.CoverImageUrl}\" />");
+        metaTags.AppendLine($"<meta property=\"og:url\" content=\"{baseUrl}/blog/{post.Id}\" />");
+        metaTags.AppendLine("<meta property=\"og:type\" content=\"article\" />");
+        metaTags.AppendLine($"<meta property=\"article:published_time\" content=\"{post.CreatedAt:O}\" />");
+        metaTags.AppendLine("<meta property=\"article:author\" content=\"Blog Author\" />"); // Replace with actual author name or fetch from user if implemented
+        metaTags.AppendLine($"<meta property=\"article:section\" content=\"{HttpUtility.HtmlEncode(post.Category.Name)}\" />");
+        
+        foreach (var tag in post.PostTags.Select(pt => pt.Tag.Name))
+        {
+            metaTags.AppendLine($"<meta property=\"article:tag\" content=\"{HttpUtility.HtmlEncode(tag)}\" />");
+        }
+
+        return metaTags.ToString();
+    }
 
 
 }

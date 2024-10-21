@@ -146,4 +146,13 @@ public class PostController : Controller
         
         return Ok(paginatedResult);
     }
+    
+    // get meta data
+    [HttpGet("get-meta-data")]
+    public async Task<IActionResult> GetMetaData(int postId)
+    {
+        var metaData = await _postService.GetOpenGraphMetaTagsAsync(postId);
+        
+        return Ok(metaData);
+    }
 }
